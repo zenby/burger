@@ -1,0 +1,23 @@
+.breadBottom {
+  background: chocolate;
+  height: 50px;
+}
+
+.breadTop {
+  background: chocolate;
+  height: 50px;
+}
+
+.meat {
+  background: red;
+  height: 20px;
+}
+
+.cheese {
+  background: yellow;
+  height: 10px;
+}
+
+.ingredient {
+  border-radius: 20px;
+}
