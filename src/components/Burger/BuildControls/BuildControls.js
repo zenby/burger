@@ -8,10 +8,16 @@ const controls = [
   { label: "Cheese", type: "cheese" }
 ];
 
-const buildControls = props => (
+const buildControls = ({ addIngredient, removeIngredient, totalPrice }) => (
   <div className={classes.buildControls}>
+    <p>Current price: {totalPrice.toFixed(2)}</p>
     {controls.map(control => (
-      <BuildControl label={control.label} key={control.label} />
+      <BuildControl
+        label={control.label}
+        key={control.label}
+        addIngredient={() => addIngredient(control.type)}
+        removeIngredient={() => removeIngredient(control.type)}
+      />
     ))}
   </div>
 );
