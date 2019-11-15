@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
+import Modal from "../../components/Modal/Modal";
+import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 
 const PRICE = {
   cheese: 2.1,
@@ -14,7 +16,8 @@ class BurgerBuilder extends Component {
       cheese: 1,
       meat: 2
     },
-    totalPrice: 2
+    totalPrice: 2,
+    purchasing: false
   };
 
   addIngredient = type => {
@@ -40,14 +43,30 @@ class BurgerBuilder extends Component {
     );
   };
 
+  continuePurchase = () => {
+    alert("continue");
+  };
+
+  togglePurchasing = () =>
+    this.setState(({ purchasing }) => ({ purchasing: !purchasing }));
+
   render() {
+    const { ingredients, totalPrice, purchasing } = this.state;
+
     return (
       <>
-        <Burger ingredients={this.state.ingredients} />
+        <Modal show={purchasing} onCancel={this.togglePurchasing}>
+          <OrderSummary
+            ingredients={ingredients}
+            continue={this.continuePurchase}
+          />
+        </Modal>
+        <Burger ingredients={ingredients} />
         <BuildControls
           addIngredient={this.addIngredient}
           removeIngredient={this.removeIngredient}
-          totalPrice={this.state.totalPrice}
+          totalPrice={totalPrice}
+          togglePurchasing={this.togglePurchasing}
         />
       </>
     );
