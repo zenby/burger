@@ -26,3 +26,16 @@
     display: none;
   }
 }
+
+@media (min-width: 500px) {
+  .mobileOnly {
+    display: none;
+  }
+}
+
+.menu {
+  cursor: pointer;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
